@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
     super.initState();
     Firestore.instance.collection("students").getDocuments().then((querySnapshot){
       var data = querySnapshot.documents; 
-      list = data.map((f) =>Student().fromMap(f.data))
+      list = data.map((f) =>Student.fromMap(f.data))
       .toList();
       setState(() {});
     });
@@ -91,7 +91,7 @@ class Student {
     };
   }
 
-  Student fromMap(Map<String, dynamic> data){
+  static Student fromMap(Map<String, dynamic> data){
     return Student(
     name:data["name"],
     age:data["age"],
